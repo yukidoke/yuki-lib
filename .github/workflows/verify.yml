@@ -93,7 +93,7 @@ jobs:
         cat "./.verify-helper/timestamps-${{ matrix.id }}.json"
         
     - name: Save timestamps
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v４
       if: ${{ !cancelled() }}
       with:
         name: timestamps
