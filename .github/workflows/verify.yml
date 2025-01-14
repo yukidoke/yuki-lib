@@ -72,7 +72,7 @@ jobs:
           echo '{}' > ./.verify-helper/timestamps.remote.json
         fi
         oj d https://judge.yosupo.jp/problem/aplusb &> /dev/null
-        fPARALLEL=$(nproc)
+        PARALLEL=$(nproc)
         echo "Parallel execution: ${PARALLEL}"
         head -c -1 ./.verify-helper/targets.txt | \
         xargs -P ${PARALLEL} -d ' ' -I {} bash ./.github/workflows/run-test.sh {}
