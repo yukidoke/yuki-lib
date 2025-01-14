@@ -58,6 +58,16 @@ jobs:
         echo ${TEST_FILES} > .verify-helper/targets.txt
         cat .verify-helper/targets.txt
 
+    - name: Cache judge data
+      if: ${{ !cancelled() && github.ref_name == github.event.repository.default_branch }}
+      id: cache-judge
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/online-judge-tools/library-checker-problems/
+          main/.verify-helper/cache/
+        key: verify-${{ hashFiles('main/verify/**/*.test.cpp', 'main/.verify-helper/targets.txt') }}
+
     - name: Run tests
       working-directory: main
       env:
