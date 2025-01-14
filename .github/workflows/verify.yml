@@ -183,4 +183,4 @@ jobs:
         CPLUS_INCLUDE_PATH: ${{ github.workspace }}/ac-library
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GH_PAT: ${{ secrets.GH_PAT }}
-      run: rm -r /home/runner/work/_temp/
+      run: oj-verify docs --jobs $(nproc)
